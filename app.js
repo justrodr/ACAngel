@@ -1,14 +1,14 @@
 (function() {
 
     var firebaseConfig = {
-    apiKey: "secret",
-    authDomain: "secret",
-    databaseURL: "secret",
-    projectId: "secret",
-    storageBucket: "secret",
-    messagingSenderId: "secret",
-    appId: "secret",
-    measurementId: "secret"
+      apiKey: "Secret",
+      authDomain: "Secret",
+      databaseURL: "Secret",
+      projectId: "Secret",
+      storageBucket: "Secret",
+      messagingSenderId: "Secret",
+      appId: "Secret",
+      measurementId: "Secret"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
@@ -40,7 +40,13 @@
     const auth = firebase.auth();
 
     //Sign in
-    firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error) {
+    firebase.auth().createUserWithEmailAndPassword(email, pass).then(e => {
+      console.log(e.uid);
+      firebase.database().ref('users/' + e.uid).set({
+        uid: e.uid,
+        email: email
+      });
+    }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -51,9 +57,11 @@
 
   firebase.auth().onAuthStateChanged(firebaseUser => {
       if(firebaseUser) {
-          console.log(firebaseUser);
+        console.log("Logged in as" + firebaseUser.uid);
+        //redirect to main dashboard
+        window.location = "dashboard.html";
       } else {
-          console.log('not logged in');
+        console.log('not logged in');
       }
   })
 
