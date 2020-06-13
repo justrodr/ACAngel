@@ -16,23 +16,14 @@
         <li><a href="#">Payment History</a></li>
         <li><a href="#">Profile</a></li>
     </ul>
-    <table id="propertiesTable" border="1">
-        <!-- <thead>
-            <tr>
-                <th>My Header</th>
-            </tr>
-        </thead> -->
-        <tbody>
-            <tr>
-                <td>Address</td>
-                <td>Tenant</td>
-                <td>View</td>
-                <td>Add AC Filter Subscription</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container">
+        <input id="txtAddress" type="address" placeholder="Address">
+        <input id="txtTenantName" type="text" placeholder="Tenant Name">
+        <input id="txtTenantPhone" type="text" placeholder="Tenant Phone Number">
+        <button id="btnAddHome" class="btn btn-action">Add Home</button>
+    </div>
     <script src="firebaseInit.js"></script>
-    <script src="dashboard.js"></script>
+    <script src="AddHome.js"></script>
 </body>
 
 
